@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Site de Vídeos</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: white;
+}
+
+header {
+  background: #000;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search-box {
+  text-align: center;
+  margin: 15px;
+}
+
+input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 20px;
+  border: none;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.video-card {
+  background: #1c1c1c;
+  padding: 10px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+}
+
+video {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.title {
+  margin-top: 8px;
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<header>🎬 Meu Site de Vídeos</header>
+
+<div class="search-box">
+<input type="text" placeholder="Pesquisar vídeos..." onkeyup="searchVideo(this.value)">
+</div>
+
+<div class="container" id="videoList">
+
+<div class="video-card">
+  <video controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
+  <div class="title">Vídeo Exemplo 1</div>
+</div>
+
+<div class="video-card">
+  <video controls>
+    <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+  </video>
+  <div class="title">Vídeo Exemplo 2</div>
+</div>
+
+</div>
+
+<script>
+function searchVideo(value) {
+  let cards = document.querySelectorAll(".video-card");
+  value = value.toLowerCase();
+
+  cards.forEach(card => {
+    let title = card.innerText.toLowerCase();
+    card.style.display = title.includes(value) ? "block" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
